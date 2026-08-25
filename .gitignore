@@ -1,0 +1,16 @@
+# 本地凭证与缓存(永不入 git)
+.dsh/
+*.secret
+.env
+.env.local
+
+# 本地测试产物
+/tmp/
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# dsh 工作区运行时产物(会话历史等，按需选择性提交)
+workspace/.dsh-sessions/
