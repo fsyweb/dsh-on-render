@@ -1,0 +1,19 @@
+# =============================================================================
+# 可选: Cloudflare Tunnel + Access (零信任，比 Basic Auth 更强)
+# 主路径用 Caddy Basic Auth 即可；想升级到 Cloudflare Access 时才用这个。
+#
+# 步骤(需注册 Cloudflare 免费账号，邮箱即可，不要信用卡不实名):
+#   1. Cloudflare Zero Trust -> Networks -> Tunnels -> Create tunnel
+#   2. 拿到 TUNNEL_TOKEN，填入 HF Spaces Secrets: CF_TUNNEL_TOKEN
+#   3. Access -> Applications -> 给 tunnel 域名加邮箱 OTP 策略
+#   4. 在 Dockerfile 取消 cloudflared 安装注释，并在 start.sh 末尾启动它
+# =============================================================================
+
+# tunnel: <你的-tunnel-id>
+# credentials-file: /home/dsh-user/.cloudflared/<id>.json
+
+ingress:
+  # 公网域名 -> 本机 dsh (此时可去掉 Caddy Basic Auth，由 Access 兜底)
+  - hostname: dsh.your-domain.example.com
+    service: http://127.0.0.1:3080
+  - service: http_status:404

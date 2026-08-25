@@ -1,0 +1,14 @@
+{
+  "$schema": "https://zeabur.com/schema/zeabur.json",
+  "build": {
+    "type": "docker"
+  },
+  "service": {
+    "port": 8080,
+    "healthCheck": {
+      "type": "http",
+      "path": "/",
+      "expectedStatus": [401, 200]
+    }
+  }
+}
