@@ -1,0 +1,14 @@
+{
+  "name": "dsh-on-render",
+  "version": "1.0.0",
+  "description": "DeepSeek Harness on Render",
+  "scripts": {
+    "start": "npx @deepseek-ai/dsh web --host 0.0.0.0 --port $PORT"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "latest"
+  },
+  "engines": {
+    "node": ">=22.14.0"
+  }
+}
